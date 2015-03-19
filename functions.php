@@ -68,6 +68,32 @@ endif; // armored_setup
 add_action( 'after_setup_theme', 'armored_setup' );
 
 /**
+ * Register widgetized area and update sidebar with default widgets
+ *
+ * @since Armored 1.0
+ **/
+function armored_widgets_init() {
+    register_sidebar( array(
+        'name' => __( 'Primary Widget Area', 'armored' ),
+        'id' => 'sidebar-1',
+        'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+        'after_widget' => '</aside>',
+        'before_title' => '<h1 class="widget-title">',
+        'after_title' => '</h1>',
+    ) );
+ 
+    register_sidebar( array(
+        'name' => __( 'Secondary Widget Area', 'armored' ),
+        'id' => 'sidebar-2',
+        'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+        'after_widget' => '</aside>',
+        'before_title' => '<h1 class="widget-title">',
+        'after_title' => '</h1>',
+    ) );
+}
+add_action( 'widgets_init', 'armored_widgets_init' );
+
+/**
  * Enqueue scripts and styles
  */
 function armored_scripts() {
